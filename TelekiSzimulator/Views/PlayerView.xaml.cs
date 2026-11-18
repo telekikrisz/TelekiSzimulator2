@@ -102,7 +102,7 @@ public partial class PlayerView : UserControl
 
         if (scene.Choices.Count == 0)
         {
-            var back = CreateChoiceButton("Vissza a történetekhez");
+            var back = CreateChoiceButton("Vége!");
             back.Click += (_, _) => ReturnToPicker();
             ChoiceButtons.Children.Add(back);
             return;

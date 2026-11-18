@@ -1,0 +1,526 @@
+:root {
+    --bg: #F3EBDD;
+    --card: #FFFBF6;
+    --ink: #2C2416;
+    --muted: #7A6B58;
+    --line: #E4D5C3;
+    --field: #F7F0E6;
+    --select: #F4E0E4;
+    --accent-line: #C9A8B0;
+    --accent: #7A2940;
+    --accent-hover: #641F34;
+    --green: #1E5C52;
+    --green-hover: #16463E;
+    --stage: #241C16;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px "Segoe UI", system-ui, sans-serif
+}
+
+#app {
+    height: 100%
+}
+
+.view {
+    height: 100%
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 24px
+}
+
+.card {
+    background: var(--card);
+    border-radius: 22px;
+    padding: 26px 28px;
+    box-shadow: 0 0 28px rgba(44, 36, 22, .14)
+}
+
+.card.home {
+    width: 400px
+}
+
+.card.picker {
+    width: 420px
+}
+
+.bar {
+    width: 52px;
+    height: 8px;
+    border-radius: 4px;
+    margin: 0 auto 16px
+}
+
+.bar.accent {
+    background: var(--accent)
+}
+
+.bar.green {
+    background: var(--green)
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0
+}
+
+.muted {
+    color: var(--muted)
+}
+
+.center-text {
+    text-align: center
+}
+
+button {
+    font: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 8px 14px;
+    cursor: pointer
+}
+
+button:hover {
+    background: var(--field)
+}
+
+button:active {
+    opacity: .85
+}
+
+button:disabled {
+    opacity: .45;
+    cursor: default
+}
+
+button.primary {
+    color: #fff;
+    background: var(--accent);
+    border-color: var(--accent)
+}
+
+button.primary:hover {
+    background: var(--accent-hover)
+}
+
+button.green {
+    color: #fff;
+    background: var(--green);
+    border-color: var(--green)
+}
+
+button.green:hover {
+    background: var(--green-hover)
+}
+
+button.big {
+    height: 52px;
+    font-size: 18px;
+    width: 100%
+}
+
+input[type=text],
+textarea,
+select {
+    font: inherit;
+    color: var(--ink);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 6px 8px;
+    width: 100%;
+    outline: none
+}
+
+input[type=text]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent-line)
+}
+
+input:disabled {
+    opacity: .6;
+    background: var(--field)
+}
+
+select {
+    min-height: 36px;
+    padding: 6px 10px;
+    cursor: pointer
+}
+
+textarea {
+    resize: vertical
+}
+
+/* Szerkesztő */
+.editor {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 16px;
+    min-width: 1100px;
+    min-height: 680px;
+    height: 100%
+}
+
+.topbar {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: auto 280px 24px auto 280px 1fr auto auto;
+    align-items: center
+}
+
+.topbar label {
+    white-space: nowrap
+}
+
+.topbar select,
+.topbar input {
+    margin-left: 8px;
+    min-height: 34px;
+    width: calc(100% - 8px)
+}
+
+.topbar .new {
+    margin-right: 8px
+}
+
+.cols {
+    display: grid;
+    grid-template-columns: 260px 1fr 400px;
+    gap: 12px;
+    min-height: 0
+}
+
+.panel {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 12px;
+    min-height: 0;
+    display: flex;
+    flex-direction: column
+}
+
+.panel.form {
+    padding: 16px;
+    overflow: auto
+}
+
+.panel h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 2px 0 8px 4px
+}
+
+.scene-list {
+    flex: 1;
+    overflow: auto;
+    position: relative
+}
+
+.scene-item {
+    padding: 7px 8px;
+    margin: 2px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    word-wrap: break-word
+}
+
+.scene-item:hover {
+    background: var(--field)
+}
+
+.scene-item.selected {
+    background: var(--select)
+}
+
+.hint-small {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 10px 0 0 2px
+}
+
+.list-actions {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+}
+
+.list-actions button {
+    padding: 8px
+}
+
+.empty {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    pointer-events: none
+}
+
+.placeholder {
+    margin: auto;
+    padding: 24px;
+    text-align: center;
+    color: var(--muted)
+}
+
+.scene-id {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 14px
+}
+
+.row2 {
+    display: grid;
+    grid-template-columns: 1fr 88px;
+    gap: 0 8px;
+    margin-bottom: 14px
+}
+
+.row2 .lbl {
+    grid-row: 1
+}
+
+.row2 input {
+    margin-top: 4px;
+    min-height: 34px
+}
+
+.row2 .chk {
+    grid-column: 1;
+    margin-top: 10px;
+    display: flex;
+    gap: 6px;
+    align-items: center
+}
+
+.field-label {
+    margin-top: 0
+}
+
+.media-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    margin: 4px 0
+}
+
+.media-name {
+    background: var(--field);
+    border-radius: 8px;
+    padding: 6px 8px;
+    min-height: 34px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.choice-head,
+.choice-row {
+    display: grid;
+    grid-template-columns: 1fr 210px 84px;
+    gap: 8px
+}
+
+.choice-head {
+    margin-bottom: 4px;
+    color: var(--muted)
+}
+
+.choice-row {
+    margin-bottom: 8px
+}
+
+.choice-row input {
+    min-height: 34px
+}
+
+.choice-row button {
+    padding: 4px
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px
+}
+
+.actions .primary {
+    padding: 8px 16px;
+    font-weight: 600
+}
+
+.status {
+    margin: 10px 4px 0;
+    color: var(--muted)
+}
+
+.mt {
+    margin-top: 2px
+}
+
+.preview-wrap {
+    flex: 1;
+    min-height: 0
+}
+
+/* Színpad */
+.stage-box {
+    background: var(--stage);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%
+}
+
+.stage-box img,
+.stage-box video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain
+}
+
+.stage-box .note {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F3EBDD;
+    text-align: center;
+    padding: 20px;
+    pointer-events: none
+}
+
+.preview-wrap .stage-box {
+    border-radius: 16px
+}
+
+.preview-status {
+    margin: 8px 4px 2px;
+    color: var(--muted);
+    word-wrap: break-word
+}
+
+/* Játékos */
+.player {
+    position: relative;
+    height: 100%;
+    overflow: auto
+}
+
+.player .close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    padding: 6px 14px;
+    z-index: 2
+}
+
+.stage-col {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.story-heading {
+    font-size: 16px;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 12px
+}
+
+.stage-main {
+    width: 720px;
+    max-width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 18px
+}
+
+.stage-main.stage-box {
+    border-radius: 18px
+}
+
+.scene-title {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px
+}
+
+.scene-text {
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    margin: 12px 0 24px;
+    white-space: pre-wrap
+}
+
+.choices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 12px
+}
+
+.choices button {
+    min-width: 180px;
+    min-height: 44px;
+    padding: 8px 16px;
+    font-size: 16px
+}
+
+.picker-status {
+    margin-top: 10px;
+    text-align: center;
+    color: var(--muted)
+}
+
+.picker-close {
+    display: block;
+    margin: 18px auto 0
+}
+
+.io-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    justify-content: center
+}
